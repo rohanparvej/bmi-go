@@ -11,9 +11,6 @@ This project is designed as a **learning and educational demo** — not a medica
 
 - **Instant BMI calculation** based on height, weight, and gender selection
 - **Animated BMI display** with color-coded feedback:
-  - ✅ Good / Healthy — Green  
-  - ⚠️ Medium — Yellow/Orange  
-  - ❌ Alarming — Red
 - **Smooth and interactive UI** with gradient animations
 - **Responsive design** — works on desktop, tablet, and mobile
 - **About section** highlighting project purpose and learning points
