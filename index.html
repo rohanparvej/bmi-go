@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI-GO | Simple BMI checker</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="#top" class="logo">
+      <img src="assets/bmi-go-logo-final.png" alt="BMI-Go">
+    </a>
+    <nav class="nav-right">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="word">Know</span> Your Body Better
+        </h1>
+        <p class="hero-tagline">
+          Calculate your BMI instantly and understand what it means — no jargon, no judgement.
+        </p>
+
+        <div class="bmi-disclaimer">
+          BMI is a general screening tool and does not account for muscle mass, age, or body composition.
+        </div>
+        <div class="bmi-disclaimer">
+          Note: This is an educational demo project, not a medical tool. BMI is a general indicator and should not be used for health decisions.
+        </div>
+      </div>
+
+      <div class="bmi-card">
+        <h2 class="bmi-title">BMI Calculator</h2>
+
+        <div class="bmi-inputs">
+            <div class="input-group">
+                <label for="gender">Gender</label>
+                <select id="gender">
+                  <option value="">Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+            </div>
+
+          <div class="input-group">
+            <label for="height">Height (cm)</label>
+            <input type="number" id="height" placeholder="e.g. 170" />
+          </div>
+
+          <div class="input-group">
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" placeholder="e.g. 65" />
+          </div>
+        </div>
+
+        <button class="bmi-btn">Calculate BMI</button>
+                
+      </div>
+
+      <div class="hero-art">
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring delay"></div>
+        <div class="pulse-center">BMI</div>
+      </div>
+
+    </section>
+
+
+    <section class="about" id="about">
+  <div class="about-inner">
+    <h2 class="about-title">About this project</h2>
+
+    <p class="about-text">
+  This BMI checker is designed to help you get a quick, easy understanding of where your body mass index stands.
+  By using just your height and weight, it gives you an estimate that can help you reflect on your overall health
+  — without pressure, judgement, or complicated medical language.
+</p>
+
+<p class="about-text">
+  Body Mass Index (BMI) is commonly used as a screening tool to identify potential weight-related health risks.
+  While it does not tell the full story of your body — such as muscle mass, bone density, or lifestyle —
+  it can still serve as a useful starting point for awareness and self-reflection.
+</p>
+
+<p class="about-text">
+  This tool is built to be simple, private, and accessible. All calculations happen directly in your browser,
+  meaning your data never leaves your device. No accounts, no tracking, no stored information —
+  just a straightforward way to check and understand your BMI.
+</p>
+
+<p class="about-text">
+  If your result falls outside the “healthy” range, don’t panic. BMI is not a diagnosis.
+  Think of it as a gentle indicator — a prompt to learn more, make informed choices,
+  or consult a healthcare professional if you have concerns.
+</p>
+
+<p class="about-text">
+  Disclaimer
+This BMI calculator is a personal educational coding project created to explore web design, animations, and basic health-related calculations.
+
+The results shown here are not medical advice and should not be used for diagnosis or treatment. BMI is a simplified metric and does not account for factors like muscle mass, age, body composition, or overall sees health.
+
+If you have concerns about your health, please consult a qualified healthcare professional.
+</p>
+
+
+    <div class="about-highlights">
+      <div class="highlight">
+        <span>🧠</span>
+        <p>Simple explanations</p>
+      </div>
+      <div class="highlight">
+        <span>🎯</span>
+        <p>No scare tactics</p>
+      </div>
+      <div class="highlight">
+        <span>🌱</span>
+        <p>Health-first mindset</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <!-- animated background -->
+  <div class="contact-bg"></div>
+
+  <!-- actual content -->
+  <div class="contact-inner">
+    <h2 class="contact-title">Let’s Connect</h2>
+
+    <p class="contact-text">
+      This project is open-source and built with simplicity in mind.
+      If you’re curious about the code, ideas behind it, or want to improve it —
+      feel free to explore the repository.
+    </p>
+
+    <a
+      href="https://github.com/your-username/your-repo"
+      target="_blank"
+      rel="noopener"
+      class="contact-btn"
+    >
+      View on GitHub
+    </a>
+  </div>
+</section>
+
+    <footer class="footer">
+  <div class="footer-container">
+
+    <!-- Left: QR-gen logo -->
+    <div class="footer-left">
+      <img
+        src="assets/bmi-go-logo-final.png"
+        alt="BMI-Go Logo"
+        class="footer-bmi-logo"
+      />
+    </div>
+
+    <!-- Center: Developed by -->
+    <div class="footer-center">
+      <p class="footer-dev-text">
+        Developed by
+        <span class="developer-name">codeX</span>
+      </p>
+
+      <a
+        href="https://github.com/"
+        target="_blank"
+        class="footer-github-btn"
+      >
+        Visit GitHub →
+      </a>
+    </div>
+
+    <!-- Right: Developer logo placeholder -->
+    <div class="footer-right">
+      <div class="developer-logo-placeholder">
+        <img id="developer-logo-size" src="assets/codeX_white_logo-01.png" alt="codeX">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom copyright -->
+  <div class="footer-bottom">
+    Built as a frontend learning project. Not intended for medical use. <br>
+    © 2026 BMI-GO. All rights reserved.
+  </div>
+</footer>
+
+  </main>
+
+  <script src="calculate.js"></script>
+</body>
+</html>

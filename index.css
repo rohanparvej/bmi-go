@@ -1,0 +1,897 @@
+/* ------------------
+   CSS Variables
+------------------- */
+:root {
+  --bg-color: #fff4ee;
+  --nav-bg: #ffffff;
+  --text-color: #2b2b2b;
+  --border-color: #e6d6ce;
+  --link-color: #3a3a3a;
+
+  /* NEW accent */
+  --link-hover: #4fb3a2;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1e1b1a;
+  --nav-bg: #262322;
+  --text-color: #f2eae7;
+  --border-color: #3a3533;
+  --link-color: #f2eae7;
+
+  /* NEW accent (lighter for dark mode) */
+  --link-hover: #8edbd0;
+}
+
+
+/* ------------------
+   Reset & Base
+------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+body {
+  font-family: "Quicksand", system-ui, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+/* ------------------
+   Navbar
+------------------- */
+/* Adjust the Navbar padding to compensate */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* Reduce the vertical padding (0.75rem -> 0.4rem) 
+     to keep the overall navbar height slim */
+  padding: 0.4rem 1.5rem; 
+  
+  background-color: var(--nav-bg);
+  border-bottom: 1px solid var(--border-color);
+  transition: padding 0.3s ease, background-color 0.3s ease;
+}
+
+/* Keep the shrink state feeling distinct */
+.navbar.shrink {
+  padding: 0.2rem 1.5rem;
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: transform 0.3s ease;
+}
+/* Update the logo img size */
+.logo img {
+  height: 2rem; /* Keep the base height small so the navbar stays slim */
+  width: auto;
+  transition: transform 0.3s ease; /* Makes the scaling look smooth */
+  
+  /* Use scale to "zoom" the logo */
+  transform: scale(2.5); 
+  
+  /* Optional: adjust the origin if the zoom feels off-center */
+  transform-origin: left center; 
+}
+.navbar.shrink .logo img {
+  height: 2.4rem; /* Scales down slightly when scrolling */
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.navbar.shrink .nav-right {
+  transform: translateX(-0.75rem);
+}
+
+/* ------------------
+   Navigation Links
+------------------- */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  color: var(--link-color);
+
+  transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: var(--link-hover);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover {
+  color: var(--link-hover);
+  transform: translateY(-2px);
+  text-shadow: 0 0 6px rgba(92, 215, 226, 0.35);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ------------------
+   Theme Toggle
+------------------- */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font-size: 1.2rem;
+  color: var(--text-color);
+
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.theme-toggle.rotate {
+  transform: rotate(180deg) scale(1.15);
+}
+
+/* ------------------
+   Hero Section
+------------------- */
+.hero {
+  min-height: calc(100vh - 64px);
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-text {
+  max-width: 480px;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero-tagline {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+/* ------------------
+   Animated Word
+------------------- */
+.word {
+  display: inline-block;
+  background: linear-gradient(90deg, #e26d5c, #ffb4a2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.word.fade-out {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.word.fade-in {
+  animation: gradientShift 1.2s ease forwards;
+}
+
+@keyframes gradientShift {
+  from { background-position: 0% 50%; }
+  to   { background-position: 100% 50%; }
+}
+
+/* ------------------
+   BMI Card (inside hero)
+------------------- */
+.bmi-card {
+  width: 100%;
+  max-width: 380px;
+  height: fit-content;
+
+  background: var(--nav-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+
+  padding: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bmi-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.bmi-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.input-group input {
+  padding: 0.65rem 0.8rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border-color);
+
+  font-size: 1rem;
+  font-family: inherit;
+
+  background: transparent;
+  color: var(--text-color);
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--link-hover);
+}
+
+.bmi-btn {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.8rem;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  color: #fff;
+  background: linear-gradient(90deg, #e26d5c, #ffb4a2);
+
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bmi-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(226, 109, 92, 0.35);
+}
+
+/* ------------------
+   Animated Art
+------------------- */
+.hero-art {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+
+.pulse-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--link-hover);
+  opacity: 0.4;
+  animation: pulse 2.5s ease-out infinite;
+}
+
+.pulse-ring.delay {
+  animation-delay: 1.25s;
+}
+
+.pulse-center {
+  position: absolute;
+  inset: 25%;
+  border-radius: 50%;
+  background: var(--link-hover);
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+@keyframes pulse {
+  from { transform: scale(0.7); opacity: 0.6; }
+  to   { transform: scale(1.2); opacity: 0; }
+}
+
+/* ------------------
+   Tablet & Desktop
+------------------- */
+@media (min-width: 768px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .hero {
+    flex-direction: row;
+    text-align: left;
+    gap: 4rem;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
+    max-width: 420px;
+  }
+
+  .hero-art {
+    width: 220px;
+    height: 220px;
+  }
+
+  .bmi-card {
+    max-width: 380px;
+  }
+}
+/* Tablet fix: prevent hero art squishing */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-art {
+    flex-shrink: 0;
+    width: 200px;
+    height: 200px;
+  }
+}
+/* Accent gradients (teal) */
+.word,
+.bmi-btn {
+  background: linear-gradient(
+    90deg,
+    var(--link-hover),
+    color-mix(in srgb, var(--link-hover), white 35%)
+  );
+}
+.pulse-ring {
+  border-color: var(--link-hover);
+  opacity: 0.35;
+}
+
+.bmi-btn:hover {
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--link-hover), transparent 55%);
+}
+/* Fix gradient text animation for Know / Keep */
+.word {
+  background: linear-gradient(
+    90deg,
+    var(--link-hover),
+    color-mix(in srgb, var(--link-hover), white 35%)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Button keeps gradient background */
+.bmi-btn {
+  background: linear-gradient(
+    90deg,
+    var(--link-hover),
+    color-mix(in srgb, var(--link-hover), white 35%)
+  );
+}
+
+.pulse-center {
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  font-variant-numeric: tabular-nums;
+}
+
+.bmi-btn:active {
+  transform: scale(0.98);
+}
+@media (min-width: 768px) {
+  .pulse-center {
+    font-size: 1.6rem;
+  }
+}
+
+
+/* BMI state accents */
+.pulse-center.good {
+  background: #4fb3a2;
+}
+
+.pulse-center.medium {
+  background: #f2b880;
+}
+
+.pulse-center.alarming {
+  background: #e07a7a;
+}
+
+/* Result section */
+.bmi-result {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.input-group select {
+  padding: 0.7rem 0.8rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border-color);
+  font-size: 1rem;
+  font-family: inherit;
+  background: transparent;
+  color: var(--text-color);
+}
+
+.input-group select:focus {
+  outline: none;
+  border-color: var(--link-hover);
+}
+
+
+/* BMI art state colors */
+.hero-art.good .pulse-ring {
+  border-color: #4fb3a2;
+}
+
+.hero-art.medium .pulse-ring {
+  border-color: #f2b880;
+}
+
+.hero-art.alarming .pulse-ring {
+  border-color: #e07a7a;
+}
+
+.hero-art.good .pulse-center {
+  background: #4fb3a2;
+}
+
+.hero-art.medium .pulse-center {
+  background: #f2b880;
+}
+
+.hero-art.alarming .pulse-center {
+  background: #e07a7a;
+}
+.bmi-disclaimer {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  max-width: 420px;
+}
+.bmi-disclaimer {
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  padding-top: 0.5rem;
+}
+/* Fix disclaimer visibility per theme */
+.bmi-disclaimer {
+  color: #6b7280;
+  border-top: 1px dashed var(--border-color);
+}
+
+[data-theme="dark"] .bmi-disclaimer {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ------------------
+   About Section
+------------------- */
+.about {
+  padding: 3rem 1.5rem;
+  background: color-mix(in srgb, var(--bg-color), white 25%);
+}
+
+[data-theme="dark"] .about {
+  background: color-mix(in srgb, var(--bg-color), black 20%);
+}
+
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 1rem;
+}
+
+.about-highlights {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.highlight {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.75rem 1rem;
+  border-radius: 0.8rem;
+
+  background: var(--nav-bg);
+  border: 1px solid var(--border-color);
+
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 768px) {
+  .about {
+    padding: 4.5rem 2rem;
+  }
+
+  .about-title {
+    font-size: 2.2rem;
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+  }
+}
+
+
+/* About highlight hover effect (informational, not clickable) */
+.about-highlights .highlight {
+  cursor: default;
+
+  background: transparent;
+  transition:
+    background 0.35s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.about-highlights .highlight:hover {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--link-hover), transparent 88%),
+    color-mix(in srgb, var(--link-hover), transparent 95%)
+  );
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 30px
+    color-mix(in srgb, var(--link-hover), transparent 75%);
+}
+
+
+/* ------------------
+   Contact Section (High-Contrast / Intense)
+------------------- */
+.contact {
+  position: relative;
+  padding: 10rem 1.5rem; /* Increased breathing room */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+}
+
+/* Background Mesh Gradient - The "Intense" part */
+.contact::before {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  /* Creates a moving "lava lamp" effect of your brand colors */
+  background: radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--link-hover), transparent 70%), transparent 40%),
+              radial-gradient(circle at 80% 70%, color-mix(in srgb, var(--link-hover), transparent 60%), transparent 40%),
+              radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--link-hover), transparent 85%), transparent 50%);
+  filter: blur(60px);
+  animation: meshRotate 15s linear infinite alternate;
+  z-index: 1;
+}
+
+@keyframes meshRotate {
+  0% { transform: translate(-5%, -5%) rotate(0deg); }
+  100% { transform: translate(5%, 5%) rotate(10deg); }
+}
+
+.contact-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding: 4rem 3rem;
+  text-align: center;
+  
+  /* Increased contrast Glassmorphism */
+  background: rgba(255, 255, 255, 0.7); /* Brighter base for Light Mode */
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  /* Thick, colored border for "pop" */
+  border: 2px solid white;
+  outline: 1px solid color-mix(in srgb, var(--link-hover), transparent 80%);
+  
+  border-radius: 2.5rem;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.15),
+    0 0 40px color-mix(in srgb, var(--link-hover), transparent 90%);
+}
+
+/* Dark mode adjustment for the glass card */
+[data-theme="dark"] .contact-inner {
+  background: rgba(38, 35, 34, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.contact-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  /* Text gradient for extra intensity */
+  background: linear-gradient(135deg, var(--text-color) 30%, var(--link-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 3rem;
+  font-weight: 500;
+}
+
+/* ------------------
+   The "Floating" Action Button
+------------------- */
+.contact-btn {
+  display: inline-block;
+  padding: 1.4rem 3.5rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  background: var(--link-hover);
+  border-radius: 99px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 25px color-mix(in srgb, var(--link-hover), transparent 70%);
+}
+
+.contact-btn:hover {
+  transform: scale(1.1) translateY(-8px);
+  background: color-mix(in srgb, var(--link-hover), black 10%);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--link-hover), transparent 60%);
+}
+
+/* Animation on scroll reveal */
+.contact-inner {
+  animation: floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Mobile Fixes */
+@media (max-width: 768px) {
+  .contact-title { font-size: 2.2rem; }
+  .contact-inner { padding: 3rem 1.5rem; }
+}
+html{
+  scroll-behavior: smooth;
+}
+
+
+
+/* ================= Footer ================= */
+
+.footer {
+  background: linear-gradient(
+    180deg,
+    rgba(34, 197, 94, 0.06),
+    rgba(239, 68, 68, 0.04)
+  );
+  margin-top: 6rem;
+  padding: 3.5rem 1rem 0;
+}
+
+.footer-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Left */
+
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.footer-bmi-logo {
+  height: 75px;
+  width: auto;
+  align-items: center;
+}
+
+/* Center */
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-dev-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.developer-name {
+  margin-left: 0.3rem;
+  font-weight: 800;
+  color: #dc2626;
+  transition: text-shadow 0.25s ease, color 0.25s ease;
+}
+
+.developer-name:hover {
+  color: #ef4444;
+  text-shadow: 0 0 12px rgba(255, 30, 71, 0.639);
+}
+
+/* GitHub Button */
+
+.footer-github-btn {
+  display: inline-block;
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #ffffff;
+
+  background: linear-gradient(
+    90deg,
+    #2563eb,
+    #1d4ed8,
+    #3b82f6
+  );
+  background-size: 200% 200%;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.footer-github-btn:hover {
+  animation: gradient-move 2s ease infinite;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.45);
+}
+
+/* Right */
+
+.footer-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.developer-logo-placeholder {
+  width: 200px;
+  height: 200px;
+  /* border-radius: 14px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px dashed rgba(0, 0, 0, 0.2); */
+  background: #00000041;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+
+/* Bottom */
+
+.footer-bottom {
+  margin-top: 3rem;
+  padding: 1.1rem 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    text-align: center;
+  }
+
+  .footer-right {
+    justify-content: center;
+  }
+}
+#developer-logo-size{
+  height: 7rem;
+}
+
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    text-align: center;
+  }
+
+  /* ADD THIS SECTION */
+  .footer-left {
+    justify-content: center; /* Centers the BMI logo */
+  }
+
+  .footer-right {
+    justify-content: center;
+  }
+}
+
